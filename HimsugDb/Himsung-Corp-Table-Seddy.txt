@@ -1,0 +1,44 @@
+Create Database HimsungCorp
+use HimsungCorp
+
+
+Create table Inventory (
+	ItemName varchar (30) Primary Key,
+	Quantity int not null,
+	ItemId int not null,
+	UnitCost int not null,
+	Price int not null,
+	Unit varchar(50) not null,
+	DateAdded  DateTime not null,
+	DateExpiration DateTime not null,
+
+);
+drop table Inventory
+
+Create table Customers (
+	Customer varchar (30) Primary Key,
+	[Address] varchar (80) not null,
+	PhoneNumber varchar (11) not null,
+	Price int not null,
+	OrderItems varchar (20) not null,
+	TotalCost varchar(50) not null,
+	TotalOrderItem int,
+	DateIssue DateTime not null,
+	DateDelivery DateTime not null,
+
+);
+drop table Customers
+
+Create table Suppliers (
+	Supplier varchar (30)  Primary Key,
+	[Address] Varchar (80) not null,
+	PhoneNumber varchar (11) not null,
+	Price int not null,
+	OrderItems varchar (20) not null,
+	TotalCost varchar(50) not null,
+	TotalOrderItem int,
+	DateIssue DateTime not null,
+	DateDelivery DateTime not null,
+
+);
+drop table Suppliers

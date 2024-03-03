@@ -1,0 +1,22 @@
+﻿@page "/login"
+
+
+
+<h3>Login</h3>
+<div>
+    <EditForm Model="@accounts">
+        <div class="text-info">
+            <label>Login</label>
+        </div>
+        <div>
+
+        </div>
+    </EditForm>
+</div>
+
+<p>Login page here</p>
+
+@code {
+    private Accounts accounts = new Accounts();
+    private string msg = "";
+}

@@ -1,0 +1,81 @@
+﻿@page "/supplierlist"
+
+@using Himsug_Final4.Shared.Models
+
+@* @inject ISupplier supplierManager
+ *@
+@*  @inject NavigationManager NavigationManager
+ *@
+ @inject HttpClient Http
+
+
+<h3>Suppliers</h3>
+
+<button class="btn btn-primary"><a href="/supplieradd">Add New</a></button>
+
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th>Supplier-ID</th>
+            <th>Supplier Name</th>
+            <th>Address</th>
+            <th>Contact Number</th>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Total Items Ordered</th>
+            <th>Total Cost</th>
+            <th>Date Added</th>
+            <th>Date Delivered</th>
+            <th>is_deleted</th>
+        </tr>
+    </thead>
+</table>
+
+<tbody>
+        @if (supplier == null)
+    {
+        <tr>
+            <td colspan="6" align="center">No Data Here</td>
+        </tr>
+    }
+    else
+    {
+        @foreach (var supplier in supplier)
+        {
+            if (supplier == null)
+            {
+                Console.WriteLine("Error!");
+            }
+            <tr>
+                <td width="15%">@supplier.SupplierID</td>
+                <td>@supplier.SupplierName</td>
+                <td>@supplier.Address</td>
+                <td>@supplier.ContactNumber</td>
+                <td>@supplier.ItemName</td>
+                <td>@supplier.Price</td>
+                <td>@supplier.TotalOrderItems</td>
+                <td>@supplier.TotalCost</td>
+                <td>@supplier.DateAdded</td>
+                <td>@supplier.PackageDeliveredDate</td>
+                <td>@supplier.is_deleted</td>
+
+
+            </tr>
+        }
+    }
+
+</tbody>
+@* <button class="btn btn-outline-primary" @onclick="AddSupplier">Create a Product</button>
+ *@
+
+@code {
+    private Supplier[]? supplier;
+    protected override async Task OnInitializedAsync()
+    {
+        await this.FetSupp();
+    }
+    private async Task FetSupp()
+    {
+        supplier = await Http.GetFromJsonAsync<Supplier[]>("/api/Suppliers");
+    }
+}

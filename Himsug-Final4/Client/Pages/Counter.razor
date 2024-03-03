@@ -1,0 +1,77 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+
+
+
+<h1>Count</h1>
+
+<input type="text" placeholder="Enter sample number" @bind="sampleinput" />
+<button class="btn btn-outline-primary" @onclick="AddtoTable">Add to the Table</button>
+
+<p role="textbox">Current Total Value : @message</p>
+
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me to Add</button>
+<button class="btn btn-danger" @onclick="DecrementCount">Click me deduct</button>
+<button class= "btn btn-info" @onclick="Count">Count how many are in total value</button>
+<button class="btn btn-info" @onclick="Addval">Add both values</button>
+
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Val</th>
+                <th>Second val</th>
+                <th>Total maybe</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            
+                <tr>
+                    <td>@currentCount</td>
+                    <td>@CCsecval</td>
+                    <td>@CCtotal</td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+
+
+
+@code {
+    private int sampleinput;
+    private int CCsecval;
+    private int currentCount = 0;
+    private int CCtotal = 0;
+    string message = "";
+
+    private void DecrementCount()
+    {
+        currentCount--;
+    }
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+    private void AddtoTable()
+    {
+
+        CCsecval = sampleinput;
+
+    }
+    private void Addval()
+    {
+        CCtotal = CCsecval + currentCount;
+    }
+    private void Count()
+    {
+        message = CCtotal.ToString();
+    }
+}

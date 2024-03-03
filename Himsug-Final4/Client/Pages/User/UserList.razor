@@ -1,0 +1,55 @@
+﻿@page "/userlist"
+
+@using Himsug_Final4.Shared.Models
+@inject HttpClient Http
+
+
+<h3>UserList</h3>
+
+<button class="btn btn-primary"><a href="/useradd">Add New</a></button>
+
+<table class="table-bordered">
+    <thead>
+        <th>User-ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Role</th>
+        <th>Status</th>
+    </thead>
+</table>
+
+<tbody>
+    @if (users == null)
+    {
+        <tr>
+            <td colspan="6" align="center">No Data Here</td>
+        </tr>
+    }
+    else
+    {
+        @foreach (var user in users)
+        {
+            <tr>
+                <td width ="15%">@user.AccountsID</td>
+                <td width="20%">@user.Username</td>
+                <td width="20%">@user.Password</td>
+                <td width="20%">@user.Access_Level</td>
+                <td width="20%">@user.Access_Level</td>
+            </tr>
+        }
+    }
+</tbody>
+
+
+@code {
+    private Accounts[]? users;
+    protected override async Task OnInitializedAsync()
+    {
+        await this.FetUser();
+    }
+    private async Task FetUser()
+    {
+        users = await Http.GetFromJsonAsync<Accounts[]>("/api/user/GetUser");
+    }
+
+}
