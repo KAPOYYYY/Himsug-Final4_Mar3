@@ -1,0 +1,12 @@
+-Ordering (Supplier contact info, Product info) -> find way to send E-mail or text to supplier with ordered items.
+-Payment Invoicing
+-Delivery Info (driver name, plate#, Phone#, Location)
+-SupplierInfo(Place delivered to "port, etc.")
+-Customer Infod
+-Login
+-Auth
+-CRUD
+-UI
+-DB
+-Search
+-Restrictions

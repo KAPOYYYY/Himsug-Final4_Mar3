@@ -1,0 +1,65 @@
+﻿@page "/personlist"
+
+@using Himsug_Final4.Shared.Models
+@using Himsug_Final4.Shared.DateConvert
+@inject HttpClient Http
+
+
+
+<h3>PersonList</h3>
+
+<button class="btn btn-primary" style="color:#fff"><a href="/personadd">Add New</a></button>
+
+<table class="table-bordered">
+
+   
+    <thead>
+    <th>Person-ID</th>
+    <th>First Name</th>
+    <th>Middle Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Gender</th>
+    <th>Address</th>
+    <th>Contact Number</th>
+    <th>Birthday</th>
+    <th>Account ID</th>
+    </thead>
+</table>
+
+<tbody>
+    @if (person == null)
+    {
+        <tr>
+            <td colspan="10" align="center">No Data Found</td>
+        </tr>
+    }
+    else
+    {
+        @foreach(var person in person)
+        {
+            <tr>
+                <td width="15%">@person.PersonID</td>
+                <td width="15%">@person.Fname</td>
+                <td width="15%">@person.Mname</td>
+                <td width="15%">@person.Lname</td>
+                <td width="15%">@person.Email</td>
+                <td width="15%">@person.Address</td>
+                <td width="15%">@person.Contact_Num</td>
+                <td width="15%">@person.Bdate</td>
+                <td width="15%">@person.AccountsID</td>
+            </tr>
+        }
+    }
+</tbody>
+@code {
+    private Person[]? person;
+    protected override async Task OnInitializedAsync()
+    {
+        await this.FetPerson();
+    }
+    private async Task FetPerson()
+    {
+        person = await Http.GetFromJsonAsync<Person[]>("api/People");
+    }
+}

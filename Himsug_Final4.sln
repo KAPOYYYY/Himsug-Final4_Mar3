@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Himsug_Final4.Server", "Himsug-Final4\Server\Himsug_Final4.Server.csproj", "{CA79A2A6-A236-4AAF-B3BF-4B492F461ECA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Himsug_Final4.Client", "Himsug-Final4\Client\Himsug_Final4.Client.csproj", "{D522D905-5B9A-40BB-92C6-6A7658271FD4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Himsug_Final4.Shared", "Himsug-Final4\Shared\Himsug_Final4.Shared.csproj", "{B4001A1E-A345-4CF2-AA37-BAD68F47DBDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E5B8A719-7682-4DD1-B0BB-5A925C11B2B4}"
+	ProjectSection(SolutionItems) = preProject
+		Things odo.txt = Things odo.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{50CD7320-A52F-4789-9476-4DD20C897A22}"
+	ProjectSection(SolutionItems) = preProject
+		HimsugDb\Tables_1.sql = HimsugDb\Tables_1.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Update", "Update", "{CCBC4747-5304-46B3-B26D-314DCAF82BF1}"
+	ProjectSection(SolutionItems) = preProject
+		HimsugDb\update\CustomerUpdate.sql = HimsugDb\update\CustomerUpdate.sql
+		HimsugDb\update\InventoryUpdate.sql = HimsugDb\update\InventoryUpdate.sql
+		HimsugDb\update\SupplierUpdate.sql = HimsugDb\update\SupplierUpdate.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Soft_del", "Soft_del", "{46458EFF-7B03-446D-B2DB-E858F47D0E2C}"
+	ProjectSection(SolutionItems) = preProject
+		HimsugDb\soft_delete\SoftDeleteCustomers.sql = HimsugDb\soft_delete\SoftDeleteCustomers.sql
+		HimsugDb\soft_delete\SoftDeleteDrivers.sql = HimsugDb\soft_delete\SoftDeleteDrivers.sql
+		HimsugDb\soft_delete\SoftDeleteProducts.sql = HimsugDb\soft_delete\SoftDeleteProducts.sql
+		HimsugDb\soft_delete\SoftDeleteSuppliers.sql = HimsugDb\soft_delete\SoftDeleteSuppliers.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Delete", "Delete", "{D20E5B00-F15D-4461-A388-3958F930B7F9}"
+	ProjectSection(SolutionItems) = preProject
+		HimsugDb\delete\CustomerDelete.sql = HimsugDb\delete\CustomerDelete.sql
+		HimsugDb\delete\DriverDelete.sql = HimsugDb\delete\DriverDelete.sql
+		HimsugDb\delete\Inventory_Delete.sql = HimsugDb\delete\Inventory_Delete.sql
+		HimsugDb\delete\SupplierDelete.sql = HimsugDb\delete\SupplierDelete.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adding", "Adding", "{3A6FC40A-DC94-4395-A1AB-0D780A7EB936}"
+	ProjectSection(SolutionItems) = preProject
+		HimsugDb\adding\Account_Adding.sql = HimsugDb\adding\Account_Adding.sql
+		HimsugDb\adding\Customer_Adding.sql = HimsugDb\adding\Customer_Adding.sql
+		HimsugDb\adding\Products_Adding.sql = HimsugDb\adding\Products_Adding.sql
+		HimsugDb\adding\Supplier_Adding.sql = HimsugDb\adding\Supplier_Adding.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA79A2A6-A236-4AAF-B3BF-4B492F461ECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA79A2A6-A236-4AAF-B3BF-4B492F461ECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA79A2A6-A236-4AAF-B3BF-4B492F461ECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA79A2A6-A236-4AAF-B3BF-4B492F461ECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D522D905-5B9A-40BB-92C6-6A7658271FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D522D905-5B9A-40BB-92C6-6A7658271FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D522D905-5B9A-40BB-92C6-6A7658271FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D522D905-5B9A-40BB-92C6-6A7658271FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4001A1E-A345-4CF2-AA37-BAD68F47DBDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4001A1E-A345-4CF2-AA37-BAD68F47DBDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4001A1E-A345-4CF2-AA37-BAD68F47DBDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4001A1E-A345-4CF2-AA37-BAD68F47DBDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CCBC4747-5304-46B3-B26D-314DCAF82BF1} = {50CD7320-A52F-4789-9476-4DD20C897A22}
+		{46458EFF-7B03-446D-B2DB-E858F47D0E2C} = {50CD7320-A52F-4789-9476-4DD20C897A22}
+		{D20E5B00-F15D-4461-A388-3958F930B7F9} = {50CD7320-A52F-4789-9476-4DD20C897A22}
+		{3A6FC40A-DC94-4395-A1AB-0D780A7EB936} = {50CD7320-A52F-4789-9476-4DD20C897A22}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E5CEE213-C912-445F-8FD0-95E5B3DAA9B4}
+	EndGlobalSection
+EndGlobal

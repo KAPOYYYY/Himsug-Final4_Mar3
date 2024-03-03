@@ -1,0 +1,26 @@
+﻿@inherits LayoutComponentBase
+
+
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="navbar nav-cus1" style="justify-content:end">
+            <div class="btn btn-cus1" href="login">
+                <NavLink class="nav-link" href="login">Login</NavLink>
+            </div>
+            <div class="btn btn-cus1" href="register">
+                <NavLink class="nav-link" href="register">Register</NavLink>
+            </div>
+        </div>
+        
+    
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>

@@ -1,0 +1,103 @@
+﻿@page "/product"
+@page "/product/{productID:int}"
+
+@* 
+@inject IProduct productManager
+@inject NavigationManager NavigationManager
+
+@if (ProductID is null)
+{
+    <PageTitle> Create Product</PageTitle>
+    <h3>ProductAdd</h3>
+}
+else
+{
+    <PageTitle>Edit @product.ProductName</PageTitle>
+    <h3>Edit @product.ProductName</h3>
+}
+
+<EditForm Model="product" OnSubmit="HandleSubmit">
+<div>
+    <label for="productname">Product Name</label>
+    <InputText id="productname" @bind-Value="@product.ProductName" class="form-control" />
+</div>
+<div>
+    <label for="unit">Unit</label>
+    <InputText id="unit" @bind-Value="@product.Unit" class="form-control" />
+</div>
+<div>
+    <label for="unitprice">Unit Price</label>
+    <InputNumber id="unitprice" @bind-Value="@product.UnitPrice" class="form-control" />
+</div>
+<div>
+    <label for="quantity">Quantity in Stock</label>
+    <InputNumber id="quantity" @bind-Value="@product.QuantityInStock" class="form-control" />
+</div>
+<div>
+    <label for="arrivaldate">Arrival Date</label>
+    <InputDate id="arrivaldate" @bind-Value="@product.ArrivalDate" class="form-control" />
+</div>
+<div>
+    <label for="expirydate">Expiration Date</label>
+    <InputDate id="expirydate" @bind-Value="@product.ExpirationDate" class="form-control" />
+</div>
+<div>
+    <label for="supplierID">SupplierID</label>
+    <InputNumber id="supplierID" @bind-Value="@product.SupplierID" class="form-control" />
+</div>
+<div>
+    <label for="status">Status</label>
+    <InputCheckbox id="status" @bind-Value="@product.is_deleted" class="form-control"/>
+</div>
+<br />
+<button type="submit" class="btn btn-outline-primary">@btnText</button>
+
+<button type="button" class="btn btn-danger"
+@onclick="DeleteProduct">Delete Product</button>
+
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public int? ProductID { get; set; }
+    string btnText = string.Empty;
+
+    Himsug_Final4.Shared.Models.Product product =
+    new Himsug_Final4.Shared.Models.Product { ProductName = "New Product" };
+
+    protected override void OnInitialized()
+    {
+        btnText = ProductID == null ? "Save New Product" : "Update Product";
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (ProductID != null)
+        {
+            var result = await productManager.GetProductID((int)ProductID);
+            if (result != null)
+                product = result;
+            else
+                NavigationManager.NavigateTo("/productlist");
+        }
+    }
+    async Task HandleSubmit()
+    {
+        if (ProductID == null)
+        {
+            await productManager.AddProduct(product);
+        }
+        else
+        {
+            await productManager.UpdateProduct((int)ProductID, product);
+        }
+    }
+    async Task DeleteProduct()
+    {
+        await productManager.DeleteProduct(product.ProductID);
+    }
+
+
+}
+ *@

@@ -1,0 +1,54 @@
+﻿@page "/useradd"
+@page "/user/edit/{userid:int}"
+
+@using Himsug_Final4.Shared.Models
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+@if (userid > 0)
+{
+    <@UserList UserID="userID" HeaderText="Update User Details" User="user" OnvalidSubmit="UpdateUser" />
+}
+else
+{
+    <@UserList UserID="0" HeaderText="Add User Details" User="user" OnvalidSubmit="AddUser" />
+
+}
+
+
+
+@code {
+    private Accounts user = new Accounts();
+
+    [Parameter] public int userid { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (userid > 0)
+            user = await Http.GetFromJsonAsync<Accounts>($"/api/user/getuser/{userid}");
+    }
+
+    private async Task AddUser()
+    {
+        Console.WriteLine(userid);
+
+        var result = await Http.PostAsJsonAsync("api/user/SaveUser", user);
+        if (result != null && result.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            NavigationManager.NavigateTo("/userlist");
+        }
+    }
+
+    private async Task UpdateUser()
+    {
+        Console.WriteLine(userid);
+
+        var result = await Http.PostAsJsonAsync("api/user/GetUser", user);
+        if (result != null && result.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            NavigationManager.NavigateTo("/userlist");
+        }
+
+    }
+
+}

@@ -1,0 +1,72 @@
+﻿@page "/supplierlist"
+
+@using Himsug_Final4.Shared.Models
+
+
+ @inject HttpClient Http
+
+
+<h3>Suppliers</h3>
+
+<button class="btn btn-primary"><a href="/supplieradd">Add New</a></button>
+
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th>Supplier-ID</th>
+            <th>Supplier Name</th>
+            <th>Address</th>
+            <th>Contact Number</th>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Total Items Ordered</th>
+            <th>Total Cost</th>
+            <th>Date Added</th>
+            <th>Date Delivered</th>
+            <th>is_deleted</th>
+        </tr>
+    </thead>
+</table>
+
+<tbody>
+        @if (supplier == null)
+    {
+        <tr>
+            <td colspan="6" align="center">No Data Here</td>
+        </tr>
+    }
+    else
+    {
+        @foreach (var supplier in supplier)
+        {
+            <tr>
+                <td width="15%">@supplier.SupplierID</td>
+                <td width="15%">@supplier.SupplierName</td>
+                <td width="15%">@supplier.Address</td>
+                <td width="15%">@supplier.ContactNumber</td>
+                <td width="15%">@supplier.ItemName</td>
+                <td width="15%">@supplier.Price</td>
+                <td width="15%">@supplier.TotalOrderItems</td>
+                <td width="15%">@supplier.TotalCost</td>
+                <td width="15%">@supplier.DateAdded</td>
+                <td width="15%">@supplier.PackageDeliveredDate</td>
+                <td width="15%">@supplier.is_deleted</td>
+            </tr>
+        }
+    }
+
+</tbody>
+@* <button class="btn btn-outline-primary" @onclick="AddSupplier">Create a Product</button>
+ *@
+
+@code {
+    private Supplier[]? supplier;
+    protected override async Task OnInitializedAsync()
+    {
+        await this.FetSupp();
+    }
+    private async Task FetSupp()
+    {
+        supplier = await Http.GetFromJsonAsync<Supplier[]>("/api/Suppliers");
+    }
+}

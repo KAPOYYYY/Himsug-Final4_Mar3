@@ -1,0 +1,73 @@
+﻿@page "/ordering"
+
+
+@using Himsug_Final4.Shared.Models;
+
+@* @inject EmailService emailservice *@ 
+@inject HttpClient Http
+
+<h3>Ordering</h3>
+
+<EditForm Model="@emailDto">
+    <div class="text-info">
+        <label>Status</label>
+        <p @bind="resMsg"></p>
+    </div>
+    <br/>
+    <div class="form-group">
+        <label>From:</label>
+        <InputText @bind-Value="emailDto.From" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+        <label>To:</label>
+        <InputText @bind-Value="emailDto.To" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Subject:</label>
+        <InputText @bind-Value="emailDto.Subject" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Message:</label>
+        <InputTextArea @bind-Value="emailDto.Body" class="form-control" />
+    </div>
+
+   
+    <button type="submit" class="btn btn-primary" @bind="SendEmail">Submit</button>
+</EditForm>
+<p>Ordering items here</p>
+
+
+@code {
+    private EmailDto emailDto = new EmailDto();
+
+    private string resMsg = "";
+
+    
+    private async ValueTask SendEmail()
+    {
+        // Call API endpoint to send email
+        var response = await Http.PostAsJsonAsync("EmailService", emailDto);
+
+        if (response.IsSuccessStatusCode)
+        {
+            // Email sent successfully here
+            resMsg = "Email Sent";
+        }
+        else
+        {
+            // error
+            resMsg = "Email Not Sent";
+        }
+    }
+
+    //  protected override async Task OnInitializedAsync()
+    // {
+    //     resMsg = await Http.GetFromJsonAsync<EmailDto[]>("Email");
+    // }
+
+    
+    
+}

@@ -1,0 +1,68 @@
+﻿@page "/productlist"  
+@using Himsug_Final4.Shared.Models
+
+ @inject HttpClient Http
+ 
+<h3>ProductList</h3>
+
+<button class="btn btn-primary" style="color:#fff"><a href="/product">Add New</a></button>
+
+<table class="table-bordered">
+
+   
+    <thead>
+    <th>Product-ID</th>
+    <th>Product Name</th>
+    <th>Unit Price</th>
+    <th>Quantity In Stock</th>
+    <th>Arrival Date</th>
+    <th>Expiration Date</th>
+    <th>Supplier-ID</th>
+    Status
+    </thead>
+
+
+
+
+
+<tbody>
+        @if (product == null)
+      {
+        <tr>
+            <td colspan="6" align="center">No Data Here</td>
+        </tr>
+      }
+    else
+    {
+            @foreach (var product in product)
+        { 
+            <tr>
+                    <td width="15%">@product.ProductID</td>
+                    <td width="15%">@product.ProductName</td>
+                    <td width="15%">@product.UnitPrice</td>
+                    <td width="15%">@product.QuantityInStock</td>
+                    <td width="15%">@product.ArrivalDate</td>
+                    <td width="15%">@product.ExpirationDate</td>
+                    <td width="15%">@product.SupplierID</td>
+                    <td width="15%">@product.is_deleted</td>
+                
+            </tr>
+        }
+    }
+</tbody>
+@* <button class="btn btn-outline-primary" @onclick="CreateProduct">Create a Product</button>
+ *@
+</table>
+
+@code {
+    private Product[]? product;
+    protected override async Task OnInitializedAsync()
+    {
+        await this.FetProduct(); 
+    }
+    private async Task FetProduct()
+    {
+        product = await Http.GetFromJsonAsync<Product[]>("/api/Products");
+    }
+
+}

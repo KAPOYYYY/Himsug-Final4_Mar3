@@ -1,0 +1,23 @@
+﻿@page "/chart"
+
+
+
+@inject IJSRuntime JSRuntime
+
+<h3>ChartComponent</h3>
+
+
+<canvas id="lineChart" style="max-width: 100%; height: auto"></canvas>
+
+@code {
+    private string[] labels = { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" };
+    private int[] data = { 12, 19, 3, 5, 2, 3 };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("createLineChart", "lineChart", labels, data);
+        }
+    }
+}
