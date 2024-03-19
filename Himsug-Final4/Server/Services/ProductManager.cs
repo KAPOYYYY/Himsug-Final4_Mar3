@@ -13,6 +13,7 @@ namespace Himsug_Final4.Server.Services
             _productDB = productDB;
         }
 
+        //addproduct
         public void AddProduct(Product product)
         {
             try
@@ -27,8 +28,8 @@ namespace Himsug_Final4.Server.Services
         }
 
         public void DeleteProduct(int productID)
-        {
-            try
+        {  
+           try
             {
                 Product? product = _productDB.Product.Find(productID);
                 if (product != null)
@@ -59,12 +60,13 @@ namespace Himsug_Final4.Server.Services
                 else
                 {
                     throw new ArgumentNullException();
-                }
+                 }
             }
             catch
             {
                 throw;
             }
+
         }
 
         public List<Product> GetProducts()
@@ -73,12 +75,15 @@ namespace Himsug_Final4.Server.Services
             {
                 return _productDB.Product.ToList();
             }
+
+        
             catch
             {
                 throw;
             }
         }
 
+        //updateproduct
         public void UpdateProduct(Product product)
         {
             try
@@ -94,4 +99,6 @@ namespace Himsug_Final4.Server.Services
     }
 }
 
-       
+        
+    
+

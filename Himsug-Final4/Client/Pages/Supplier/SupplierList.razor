@@ -39,6 +39,10 @@
     {
         @foreach (var supplier in supplier)
         {
+            if (supplier == null)
+            {
+                Console.WriteLine("Error!");
+            }
             <tr>
                 <td width="15%">@supplier.SupplierID</td>
                 <td width="15%">@supplier.SupplierName</td>
