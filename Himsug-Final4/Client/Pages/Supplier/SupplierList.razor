@@ -39,18 +39,12 @@
     {
         @foreach (var supplier in supplier)
         {
+            if (supplier == null)
+            {
+                Console.WriteLine("Error!");
+            }
             <tr>
                 <td width="15%">@supplier.SupplierID</td>
-                <td width="15%">@supplier.SupplierName</td>
-                <td width="15%">@supplier.Address</td>
-                <td width="15%">@supplier.ContactNumber</td>
-                <td width="15%">@supplier.ItemName</td>
-                <td width="15%">@supplier.Price</td>
-                <td width="15%">@supplier.TotalOrderItems</td>
-                <td width="15%">@supplier.TotalCost</td>
-                <td width="15%">@supplier.DateAdded</td>
-                <td width="15%">@supplier.PackageDeliveredDate</td>
-                <td width="15%">@supplier.is_deleted</td>
             </tr>
         }
     }

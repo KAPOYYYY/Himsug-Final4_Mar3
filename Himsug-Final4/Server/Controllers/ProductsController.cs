@@ -1,7 +1,8 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -29,18 +30,18 @@ namespace Himsug_Final4.Server.Controllers
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
-        {
+          {
             if (id == null || _context.Product == null)
             {
-                return NotFound();
-            }
+              return NotFound();
+          }
 
             var product = await _context.Product
                 .FirstOrDefaultAsync(m => m.ProductID == id);
             if (product == null)
             {
                 return NotFound();
-            }
+        }
 
             return View(product);
         }
@@ -57,7 +58,7 @@ namespace Himsug_Final4.Server.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProductID,ProductName,Unit,UnitPrice,QuantityInStock,ArrivalDate,ExpirationDate,SupplierID,is_deleted")] Product product)
-        {
+          {
             if (ModelState.IsValid)
             {
                 _context.Add(product);
@@ -72,8 +73,9 @@ namespace Himsug_Final4.Server.Controllers
         {
             if (id == null || _context.Product == null)
             {
-                return NotFound();
-            }
+              return NotFound();
+          }
+           
 
             var product = await _context.Product.FindAsync(id);
             if (product == null)
@@ -97,26 +99,26 @@ namespace Himsug_Final4.Server.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
+            try
+            {
                     _context.Update(product);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
                     if (!ProductExists(product.ProductID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
                 }
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
-        }
+            }
 
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -124,14 +126,16 @@ namespace Himsug_Final4.Server.Controllers
             if (id == null || _context.Product == null)
             {
                 return NotFound();
-            }
+        }
 
             var product = await _context.Product
                 .FirstOrDefaultAsync(m => m.ProductID == id);
             if (product == null)
-            {
+          {
                 return NotFound();
-            }
+          }
+            _context.Product.Add(product);
+            await _context.SaveChangesAsync();
 
             return View(product);
         }
@@ -150,14 +154,15 @@ namespace Himsug_Final4.Server.Controllers
             {
                 _context.Product.Remove(product);
             }
-            
+
+            _context.Product.Remove(product);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductExists(int id)
         {
-          return (_context.Product?.Any(e => e.ProductID == id)).GetValueOrDefault();
+            return (_context.Product?.Any(e => e.ProductID == id)).GetValueOrDefault();
         }
     }
 }
