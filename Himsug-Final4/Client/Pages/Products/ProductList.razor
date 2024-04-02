@@ -65,13 +65,17 @@
  *@    </table>
     @code 
 {
+ *@
+</table>
+>>>>>>>>> Temporary merge branch 2
+        await this.FetProduct();
+@code {
     private Product[]? product;
     protected override async Task OnInitializedAsync()
-    {
-        await this.FetProduct();
-    }
-    private async Task FetProduct()
-    {
         await Http.GetFromJsonAsync<Product[]>("/api/Products");
+        await this.FetProduct(); 
+}    {
+        product = await Http.GetFromJsonAsync<Product[]>("/api/Products");
     }
+
 }
