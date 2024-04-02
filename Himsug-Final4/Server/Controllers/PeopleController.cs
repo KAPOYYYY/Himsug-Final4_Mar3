@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Himsug_Final4.Shared;
 using Himsug_Final4.Shared.Models;
+using System.Text.Json;
 
 namespace Himsug_Final4.Server.Controllers
 {
@@ -75,6 +76,10 @@ namespace Himsug_Final4.Server.Controllers
                 {
                     throw;
                 }
+            }
+            catch (JsonException ex)
+            {
+                Console.WriteLine($"JSON Deserialization Error: {ex.Message}");
             }
 
             return NoContent();
