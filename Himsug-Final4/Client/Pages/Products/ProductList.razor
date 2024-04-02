@@ -65,13 +65,20 @@
  *@    </table>
     @code 
 {
+ 
+
+
+
+@code {
     private Product[]? product;
     protected override async Task OnInitializedAsync()
     {
-        await this.FetProduct();
-    }
-    private async Task FetProduct()
-    {
         await Http.GetFromJsonAsync<Product[]>("/api/Products");
+        await this.FetProduct(); 
+}   
+        private async Task FetProduct()
+    {
+        product = await Http.GetFromJsonAsync<Product[]>("/api/Products");
     }
+
 }
