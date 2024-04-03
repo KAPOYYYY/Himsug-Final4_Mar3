@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Himsug_Final4.Shared;
 using Himsug_Final4.Shared.Models;
-using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace Himsug_Final4.Server.Controllers
 {

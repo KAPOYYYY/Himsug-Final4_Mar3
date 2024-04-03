@@ -59,6 +59,6 @@
     }
     private async Task FetPerson()
     {
-        person = await Http.GetFromJsonAsync<Person[]>("api/People");
+        person = await Http.GetFromJsonAsync<Person[]>("/api/People");
     }
 }
