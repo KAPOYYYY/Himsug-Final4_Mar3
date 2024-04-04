@@ -77,10 +77,7 @@ namespace Himsug_Final4.Server.Controllers
                     throw;
                 }
             }
-            catch (JsonException ex)
-            {
-                Console.WriteLine($"JSON Deserialization Error: {ex.Message}");
-            }
+
 
             return NoContent();
         }

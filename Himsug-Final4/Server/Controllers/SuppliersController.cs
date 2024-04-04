@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Himsug_Final4.Shared;
 using Himsug_Final4.Shared.Models;
+using Newtonsoft.Json;
 
 namespace Himsug_Final4.Server.Controllers
 {
@@ -22,6 +23,7 @@ namespace Himsug_Final4.Server.Controllers
         }
 
         // GET: api/Suppliers
+        [Route ("Suppliers")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Supplier>>> GetSuppliers()
         {
@@ -66,6 +68,10 @@ namespace Himsug_Final4.Server.Controllers
             {
                 await _context.SaveChangesAsync();
             }
+            catch (JsonException ex)
+            {
+                Console.WriteLine($"JSON Deserialization Error: {ex.Message}");
+            }
             catch (DbUpdateConcurrencyException)
             {
                 if (!SupplierExists(id))
@@ -77,6 +83,7 @@ namespace Himsug_Final4.Server.Controllers
                     throw;
                 }
             }
+
 
             return NoContent();
         }
@@ -118,7 +125,7 @@ namespace Himsug_Final4.Server.Controllers
 
         private bool SupplierExists(int id)
         {
-            return (_context.Suppliers?.Any(c => c.SupplierID == id)).GetValueOrDefault();
+            return (_context.Suppliers?.Any(e => e.SupplierID == id)).GetValueOrDefault();
         }
     }
 }

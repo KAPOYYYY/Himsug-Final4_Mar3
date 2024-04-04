@@ -11,6 +11,8 @@ using Himsug_Final4.Shared.Models;
 
 namespace Himsug_Final4.Server.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class ProductsController : Controller
     {
         private readonly ProductDBContext _context;
@@ -20,7 +22,7 @@ namespace Himsug_Final4.Server.Controllers
             _context = context;
         }
 
-        // GET: Products
+        // GET: api/Products
         public async Task<IActionResult> Index()
         {
               return _context.Product != null ? 

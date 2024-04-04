@@ -3,32 +3,32 @@ using Himsug_Final4.Shared.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Himsug_Final4.Server.Services
-{
+{ 
+
     public class SupplierManager : ISuppliers
     {
-
         readonly SupplierDBContext _supplierDB = new();
-
-        public SupplierManager(SupplierDBContext supplierDB)
+        public SupplierManager(SupplierDBContext supplierDB) 
         {
             _supplierDB = supplierDB;
         }
-        //AddPerson
-        public void AddSupplier(Supplier supp)
+        public void AddSupplier(Supplier supplier)
         {
             try
             {
-                _supplierDB.Suppliers.Add(supp);
+                _supplierDB.Suppliers.Add(supplier);
                 _supplierDB.SaveChanges();
             }
             catch
             {
                 throw;
             }
+
         }
-        //DeletePerson
+
         public void DeleteSupplier(int supplierID)
         {
+
             try
             {
                 Supplier? supplier = _supplierDB.Suppliers.Find(supplierID);
@@ -41,26 +41,15 @@ namespace Himsug_Final4.Server.Services
                 {
                     throw new ArgumentNullException();
                 }
+
             }
             catch
             {
                 throw;
             }
         }
-        //List Persons
-        public List<Supplier> GetSupplierDetails()
-        {
-            try
-            {
-                return _supplierDB.Suppliers.ToList();
-            }
-            catch
-            {
-                throw;
-            }
-        }
-        //GetPersonID
-        public Supplier GetSupplier(int supplierID)
+
+        public Supplier GetSupplierID(int supplierID)
         {
             try
             {
@@ -79,18 +68,34 @@ namespace Himsug_Final4.Server.Services
                 throw;
             }
         }
-        //UpdatePerson
-        public void UpdateSupplier(Supplier supp)
+
+        public List<Supplier> GetSupplierDetails()
         {
             try
             {
-                _supplierDB.Entry(supp).State = EntityState.Modified;
-                _supplierDB.SaveChanges();
+                return _supplierDB.Suppliers.ToList();
             }
             catch
             {
                 throw;
             }
         }
+
+        public void UpdateSupplier(Supplier supplier)
+        {
+            try
+            {
+                _supplierDB.Entry(supplier).State = EntityState.Modified;
+                _supplierDB.SaveChanges();
+            }
+            catch 
+            {
+                throw;
+            }
+        }
     }
+
+
+    
+    
 }

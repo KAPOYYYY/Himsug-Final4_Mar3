@@ -1,0 +1,79 @@
+﻿@model Himsug_Final4.Shared.Models.Supplier
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Supplier</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SupplierID" />
+            <div class="form-group">
+                <label asp-for="SupplierName" class="control-label"></label>
+                <input asp-for="SupplierName" class="form-control" />
+                <span asp-validation-for="SupplierName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactNumber" class="control-label"></label>
+                <input asp-for="ContactNumber" class="form-control" />
+                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemName" class="control-label"></label>
+                <input asp-for="ItemName" class="form-control" />
+                <span asp-validation-for="ItemName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalOrderItems" class="control-label"></label>
+                <input asp-for="TotalOrderItems" class="form-control" />
+                <span asp-validation-for="TotalOrderItems" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalCost" class="control-label"></label>
+                <input asp-for="TotalCost" class="form-control" />
+                <span asp-validation-for="TotalCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateAdded" class="control-label"></label>
+                <input asp-for="DateAdded" class="form-control" />
+                <span asp-validation-for="DateAdded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PackageDeliveredDate" class="control-label"></label>
+                <input asp-for="PackageDeliveredDate" class="form-control" />
+                <span asp-validation-for="PackageDeliveredDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="is_deleted" /> @Html.DisplayNameFor(model => model.is_deleted)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

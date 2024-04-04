@@ -12,7 +12,7 @@ namespace Himsug_Final4.Server.Services
 
         public void DeleteSupplier(int supplierID);
 
-        public Supplier GetSupplier(int supplierID);
+        public Supplier GetSupplierID(int supplierID);
 
     }
 }
