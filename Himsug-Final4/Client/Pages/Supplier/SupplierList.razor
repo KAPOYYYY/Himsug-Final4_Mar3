@@ -71,6 +71,6 @@
     }
     private async Task FetSupp()
     {
-        supplier = await Http.GetFromJsonAsync<Supplier[]>("/api/Suppliers");
+        supplier = await Http.GetFromJsonAsync<Supplier[]>("api/Suppliers");
     }
 }
