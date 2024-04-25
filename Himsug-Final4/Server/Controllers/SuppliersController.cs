@@ -27,22 +27,22 @@ namespace Himsug_Final4.Server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Supplier>>> GetSuppliers()
         {
-          if (_context.Suppliers == null)
+          if (_context.tbl_Supplier == null)
           {
               return NotFound();
           }
-            return await _context.Suppliers.ToListAsync();
+            return await _context.tbl_Supplier.ToListAsync();
         }
 
         // GET: api/Suppliers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Supplier>> GetSupplier(int id)
         {
-          if (_context.Suppliers == null)
+          if (_context.tbl_Supplier == null)
           {
               return NotFound();
           }
-            var supplier = await _context.Suppliers.FindAsync(id);
+            var supplier = await _context.tbl_Supplier.FindAsync(id);
 
             if (supplier == null)
             {
@@ -93,11 +93,11 @@ namespace Himsug_Final4.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<Supplier>> PostSupplier(Supplier supplier)
         {
-          if (_context.Suppliers == null)
+          if (_context.tbl_Supplier == null)
           {
               return Problem("Entity set 'SupplierDBContext.Suppliers'  is null.");
           }
-            _context.Suppliers.Add(supplier);
+            _context.tbl_Supplier.Add(supplier);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetSupplier", new { id = supplier.SupplierID }, supplier);
@@ -107,17 +107,17 @@ namespace Himsug_Final4.Server.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSupplier(int id)
         {
-            if (_context.Suppliers == null)
+            if (_context.tbl_Supplier == null)
             {
                 return NotFound();
             }
-            var supplier = await _context.Suppliers.FindAsync(id);
+            var supplier = await _context.tbl_Supplier.FindAsync(id);
             if (supplier == null)
             {
                 return NotFound();
             }
 
-            _context.Suppliers.Remove(supplier);
+            _context.tbl_Supplier.Remove(supplier);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -125,7 +125,7 @@ namespace Himsug_Final4.Server.Controllers
 
         private bool SupplierExists(int id)
         {
-            return (_context.Suppliers?.Any(e => e.SupplierID == id)).GetValueOrDefault();
+            return (_context.tbl_Supplier?.Any(e => e.SupplierID == id)).GetValueOrDefault();
         }
     }
 }

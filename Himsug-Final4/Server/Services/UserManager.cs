@@ -17,7 +17,7 @@ namespace Himsug_Final4.Server.Services
         {
             try
             {
-                return _dbcontext.Accounts.ToList();
+                return _dbcontext.tbl_Login.ToList();
             }
 
             catch
@@ -30,7 +30,7 @@ namespace Himsug_Final4.Server.Services
         {
             try
             {
-                _dbcontext.Accounts.Add(user);
+                _dbcontext.tbl_Login.Add(user);
                 _dbcontext.SaveChanges();
             }
             catch
@@ -56,7 +56,7 @@ namespace Himsug_Final4.Server.Services
         {
             try
             {
-                Accounts? user = _dbcontext.Accounts.Find(id);
+                Accounts? user = _dbcontext.tbl_Login.Find(id);
                 if (user != null)
                 {
                     return user;
@@ -76,10 +76,10 @@ namespace Himsug_Final4.Server.Services
         {
             try
             {
-                Accounts? user = _dbcontext.Accounts.Find(id);
+                Accounts? user = _dbcontext.tbl_Login.Find(id);
                 if (user != null)
                 {
-                    _dbcontext.Accounts.Remove(user);
+                    _dbcontext.tbl_Login.Remove(user);
                     _dbcontext.SaveChanges();
                 }
                 else

@@ -16,7 +16,7 @@ namespace Himsug_Final4.Server.Services
         {
             try
             {
-                _supplierDB.Suppliers.Add(supplier);
+                _supplierDB.tbl_Supplier.Add(supplier);
                 _supplierDB.SaveChanges();
             }
             catch
@@ -31,10 +31,10 @@ namespace Himsug_Final4.Server.Services
 
             try
             {
-                Supplier? supplier = _supplierDB.Suppliers.Find(supplierID);
+                Supplier? supplier = _supplierDB.tbl_Supplier.Find(supplierID);
                 if (supplier != null)
                 {
-                    _supplierDB.Suppliers.Remove(supplier);
+                    _supplierDB.tbl_Supplier.Remove(supplier);
                     _supplierDB.SaveChanges();
                 }
                 else
@@ -53,7 +53,7 @@ namespace Himsug_Final4.Server.Services
         {
             try
             {
-                Supplier? supplier = _supplierDB.Suppliers.Find(supplierID);
+                Supplier? supplier = _supplierDB.tbl_Supplier.Find(supplierID);
                 if (supplier != null)
                 {
                     return supplier;
@@ -73,7 +73,7 @@ namespace Himsug_Final4.Server.Services
         {
             try
             {
-                return _supplierDB.Suppliers.ToList();
+                return _supplierDB.tbl_Supplier.ToList();
             }
             catch
             {

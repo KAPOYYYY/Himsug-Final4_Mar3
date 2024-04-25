@@ -23,7 +23,7 @@ namespace Himsug_Final4.Server.Controllers
         {
             try
             {
-                var _data = await _dbcontext.Accounts.ToListAsync();
+                var _data = await _dbcontext.tbl_Login.ToListAsync();
                 return _data;
             }
             catch (Exception)
@@ -37,7 +37,7 @@ namespace Himsug_Final4.Server.Controllers
         {
             try
             {
-                var _data = await _dbcontext.Accounts.FindAsync(id);
+                var _data = await _dbcontext.tbl_Login.FindAsync(id);
                 return _data;
             }
 
@@ -52,7 +52,7 @@ namespace Himsug_Final4.Server.Controllers
         {
             try
             {
-                if (_dbcontext.Accounts == null)
+                if (_dbcontext.tbl_Login == null)
                 {
                     return Problem("Entity set 'AppDbContext.User is null'");
                 }
@@ -105,16 +105,16 @@ namespace Himsug_Final4.Server.Controllers
         [HttpDelete("DeleteUser/{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            if (_dbcontext.Accounts == null)
+            if (_dbcontext.tbl_Login == null)
             {
                 return NotFound();
             }
-            var role1 = await _dbcontext.Accounts.FindAsync(id);
+            var role1 = await _dbcontext.tbl_Login.FindAsync(id);
             if (role1 == null)
             {
                 return NotFound();  
             }
-            _dbcontext.Accounts.Remove(role1);
+            _dbcontext.tbl_Login.Remove(role1);
             await _dbcontext.SaveChangesAsync();
 
             return NoContent();
@@ -122,7 +122,7 @@ namespace Himsug_Final4.Server.Controllers
         }
         public bool UserExists(int id)
         {
-            return (_dbcontext.Accounts?.Any(u => u.AccountsID == id)).GetValueOrDefault();
+            return (_dbcontext.tbl_Login?.Any(u => u.AccountsID == id)).GetValueOrDefault();
         }
 
     }

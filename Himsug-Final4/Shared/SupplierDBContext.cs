@@ -13,7 +13,7 @@ namespace Himsug_Final4.Shared
         public SupplierDBContext(DbContextOptions<SupplierDBContext> options) : base(options) { 
         }
 
-        public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<Supplier> tbl_Supplier { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

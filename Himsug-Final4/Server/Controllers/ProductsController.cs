@@ -25,20 +25,20 @@ namespace Himsug_Final4.Server.Controllers
         // GET: api/Products
         public async Task<IActionResult> Index()
         {
-              return _context.Product != null ? 
-                          View(await _context.Product.ToListAsync()) :
+              return _context.tbl_ProductDetail != null ? 
+                          View(await _context.tbl_ProductDetail.ToListAsync()) :
                           Problem("Entity set 'ProductDBContext.Product'  is null.");
         }
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
           {
-            if (id == null || _context.Product == null)
+            if (id == null || _context.tbl_ProductDetail == null)
             {
               return NotFound();
           }
 
-            var product = await _context.Product
+            var product = await _context.tbl_ProductDetail
                 .FirstOrDefaultAsync(m => m.ProductID == id);
             if (product == null)
             {
@@ -73,13 +73,13 @@ namespace Himsug_Final4.Server.Controllers
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Product == null)
+            if (id == null || _context.tbl_ProductDetail == null)
             {
               return NotFound();
           }
            
 
-            var product = await _context.Product.FindAsync(id);
+            var product = await _context.tbl_ProductDetail.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -125,18 +125,18 @@ namespace Himsug_Final4.Server.Controllers
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Product == null)
+            if (id == null || _context.tbl_ProductDetail == null)
             {
                 return NotFound();
         }
 
-            var product = await _context.Product
+            var product = await _context.tbl_ProductDetail
                 .FirstOrDefaultAsync(m => m.ProductID == id);
             if (product == null)
           {
                 return NotFound();
           }
-            _context.Product.Add(product);
+            _context.tbl_ProductDetail.Add(product);
             await _context.SaveChangesAsync();
 
             return View(product);
@@ -147,24 +147,24 @@ namespace Himsug_Final4.Server.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Product == null)
+            if (_context.tbl_ProductDetail == null)
             {
                 return Problem("Entity set 'ProductDBContext.Product'  is null.");
             }
-            var product = await _context.Product.FindAsync(id);
+            var product = await _context.tbl_ProductDetail.FindAsync(id);
             if (product != null)
             {
-                _context.Product.Remove(product);
+                _context.tbl_ProductDetail.Remove(product);
             }
 
-            _context.Product.Remove(product);
+            _context.tbl_ProductDetail.Remove(product);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductExists(int id)
         {
-            return (_context.Product?.Any(e => e.ProductID == id)).GetValueOrDefault();
+            return (_context.tbl_ProductDetail?.Any(e => e.ProductID == id)).GetValueOrDefault();
         }
     }
 }

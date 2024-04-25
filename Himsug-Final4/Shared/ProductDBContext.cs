@@ -13,7 +13,7 @@ namespace Himsug_Final4.Shared
         public ProductDBContext(DbContextOptions<ProductDBContext> options) : base(options) { 
         }
 
-        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Product> tbl_ProductDetail { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

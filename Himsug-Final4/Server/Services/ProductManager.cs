@@ -18,7 +18,7 @@ namespace Himsug_Final4.Server.Services
         {
             try
             {
-                _productDB.Product.Add(product);
+                _productDB.tbl_ProductDetail.Add(product);
                 _productDB.SaveChanges();
             }
             catch
@@ -31,10 +31,10 @@ namespace Himsug_Final4.Server.Services
         {  
            try
             {
-                Product? product = _productDB.Product.Find(productID);
+                Product? product = _productDB.tbl_ProductDetail.Find(productID);
                 if (product != null)
                 {
-                    _productDB.Product.Remove(product);
+                    _productDB.tbl_ProductDetail.Remove(product);
                     _productDB.SaveChanges();
                 }
                 else
@@ -52,7 +52,7 @@ namespace Himsug_Final4.Server.Services
         {
             try
             {
-                Product? person = _productDB.Product.Find(productID);
+                Product? person = _productDB.tbl_ProductDetail.Find(productID);
                 if (person != null)
                 {
                     return person;
@@ -73,7 +73,7 @@ namespace Himsug_Final4.Server.Services
         {
             try
             {
-                return _productDB.Product.ToList();
+                return _productDB.tbl_ProductDetail.ToList();
             }
 
         

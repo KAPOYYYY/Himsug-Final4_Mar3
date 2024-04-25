@@ -17,7 +17,7 @@ namespace Himsug_Final4.Shared
         {
         }
 
-        public virtual DbSet<Accounts> Accounts { get; set; }
+        public virtual DbSet<Accounts> tbl_Login { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         
